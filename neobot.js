@@ -51,8 +51,9 @@ bot.on('inlineQuery', msg => {
     const answers = bot.answerList(msg.id, {cacheTime: 60});
 	petImage(`${ query }`).then(data => {
 		petpic = data.url;
-		console.log(data.url);
+		console.log(data);
 	}).catch(console.error);
+	console.log(petpic);
     // Photo
 	var output = petpic.substr(0, petpic.lastIndexOf('.')) || petpic;
     answers.addPhoto({
