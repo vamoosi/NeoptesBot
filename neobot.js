@@ -52,6 +52,7 @@ bot.on('inlineQuery', msg => {
 		photo_url: 'http://pets.neopets.com/cp/qn8kjbwf/1/5.png',
 		thumb_url: 'http://pets.neopets.com/cp/qn8kjbwf/1/5.png'
 	});
+	return bot.answerQuery(answers);
 });
 //games list
 var lastMessage;
