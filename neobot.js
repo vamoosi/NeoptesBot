@@ -42,19 +42,13 @@ bot.on('/userscripts', function (msg) {
 	    return bot.sendMessage(msg.chat.id, text, {parseMode, webPreview});
 });
 //neopet image get
-var petpic;
 bot.on('inlineQuery', msg => {
+	var petpic;
     let query = msg.query;
     console.log(`inline query: ${ query }`);
-
     // Create a new answer list object
     const answers = bot.answerList(msg.id, {cacheTime: 60});
 	petImage(`${ query }`).then(data => {
-		console.log(data);
-		petpic = data.url;
-	}).catch(console.error);
-	console.log(petpic);
-		petImage(`${ query }`).then(data => {
 		console.log(data);
 		petpic = data.url;
 	}).catch(console.error);
