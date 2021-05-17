@@ -4,7 +4,7 @@
   "description": "wahoo",
   "main": "neobot.js",
   "scripts": {
-	"start": "neobot.js",
+	"start": "node neobot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

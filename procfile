@@ -1,1 +1,1 @@
-worker: neoptes.js
+worker: node neobot.js
