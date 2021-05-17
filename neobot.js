@@ -49,13 +49,13 @@ bot.on('inlineQuery', msg => {
 
     // Create a new answer list object
     const answers = bot.answerList(msg.id, {cacheTime: 60});
-    // Photo
-    answers.addPhoto({
-		petImage(`${ query }`).then(data => {
+	petImage(`${ query }`).then(data => {
 		console.log(data);
 		petpic = data.url;
 	}).catch(console.error);
 	console.log(petpic);
+    // Photo
+    answers.addPhoto({
         id: 'photo',
         caption: `${ query }`,
         photo_url: 'https://telegram.org/img/t_logo.png',
