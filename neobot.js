@@ -31,7 +31,7 @@ bot.on('/info', function (msg) {
 bot.on('/links', function (msg) {
 	let parseMode = 'HTML';
 	let webPreview = false;
-	let text = 'Here are some handy links!\n\nNeopets pages: \n•<a href="http://www.neopets.com/stockmarket.phtml?type=portfolio">Stock Portfolio</a> \n•<a href="http://www.neopets.com/stockmarket.phtml?type=list&search=%&bargain=true">Bargain Stocks</a> \n•<a href="www.neopets.com/market.phtml?type=till">Your shop till</a> \n•<a href="http://www.neopets.com/~brownhownd">When will the Turmaculus wake up?</a> \n•<a href="http://www.neopets.com/neolodge.phtml">Neolodge</a> \n\nPages off of Neopets: \n•<a href="https://neofood.club/">NeoFoodClub</a> \n•<a href="http://lost.quiggle.org/">Lost and Pound</a> \n•<a href="http://www.jellyneo.net/?go=links">Games that don\'t need flash</a> \n•<a href="https://www.reddit.com/r/neopets/comments/n5k480/how_to_enable_flash_in_2021/">Enabling flash if you really wanna</a> \n•<a href="https://www.reddit.com/r/neopets/wiki/guides">Reddit guides</a> ';
+	let text = 'Here are some handy links!\n\nNeopets pages: \n•<a href="http://www.neopets.com/stockmarket.phtml?type=portfolio">Stock Portfolio</a> \n•<a href="http://www.neopets.com/stockmarket.phtml?type=list&search=%&bargain=true">Bargain Stocks</a> \n•<a href="www.neopets.com/market.phtml?type=till">Your shop till</a> \n•<a href="http://www.neopets.com/~brownhownd">When will the Turmaculus wake up?</a> \n•<a href="http://www.neopets.com/neolodge.phtml">Neolodge</a> \n\nPages off of Neopets: \n•<a href=">https://thedailyneopets.com/dailies>Dailies on TDN</a> \n•<a href="https://neofood.club/">NeoFoodClub</a> \n•<a href="http://lost.quiggle.org/">Lost and Pound</a> \n•<a href="http://www.jellyneo.net/?go=links">Games that don\'t need flash</a> \n•<a href="https://www.reddit.com/r/neopets/comments/n5k480/how_to_enable_flash_in_2021/">Enabling flash if you really wanna</a> \n•<a href="https://www.reddit.com/r/neopets/wiki/guides">Reddit guides</a> ';
     return bot.sendMessage(msg.chat.id, text, {parseMode, webPreview});
 });
 //userscripts
@@ -42,24 +42,24 @@ bot.on('/userscripts', function (msg) {
 	    return bot.sendMessage(msg.chat.id, text, {parseMode, webPreview});
 });
 //neopet image get
-// On inline query
+var petget;
 bot.on('inlineQuery', msg => {
-	var petpic;
     let query = msg.query;
     console.log(`inline query: ${ query }`);
 
     // Create a new answer list object
     const answers = bot.answerList(msg.id, {cacheTime: 60});
 	petImage(`${ query }`).then(data => {
-		petpic = data.url;
+		petget = data.url;
 		console.log(data.url);
 	}).catch(console.error);
     // Photo
     answers.addPhoto({
+		const petpic = petget;
         id: 'photo',
         caption: `${ query }`,
-        photo_url: petpic,
-        thumb_url: petpic
+        photo_url: `${ petpic }`,
+        thumb_url: `${ petpic }`
     });
     // Send answers
     return bot.answerQuery(answers);
