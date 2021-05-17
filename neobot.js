@@ -56,8 +56,8 @@ bot.on('inlineQuery', msg => {
 		answers.addPhoto({
 			id: 'photo',
 			caption: `${ query }`,
-			photo_url: data.url,
-			thumb_url: data.url
+			photo_url: 'http://pets.neopets.com/cp/zg2rtxnw/1/5.png',
+			thumb_url: 'http://pets.neopets.com/cp/zg2rtxnw/1/5.png'
 		});
 	}).catch(console.error);
 
