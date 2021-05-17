@@ -54,8 +54,7 @@ bot.on('inlineQuery', msg => {
 		console.log(data.url);
 	}).catch(console.error);
     // Photo
-	var input = petpic;
-	var output = input.substr(0, input.lastIndexOf('.')) || input;
+	var output = petpic.substr(0, petpic.lastIndexOf('.')) || petpic;
     answers.addPhoto({
         id: 'photo',
         caption: `${ query }`,
