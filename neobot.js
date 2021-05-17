@@ -58,8 +58,8 @@ bot.on('inlineQuery', msg => {
     answers.addPhoto({
         id: 'photo',
         caption: `${ query }`,
-        photo_url: `${ petpic }`,
-        thumb_url: `${ petpic }`
+        photo_url: petpic,
+        thumb_url: petpic
     });
     // Send answers
     return bot.answerQuery(answers);
@@ -144,7 +144,7 @@ bot.on('/games4', msg => {
 });
 //commands list
 bot.on('/commands', function (msg) {
-	let text = 'I\'m Neoptes the Neopets bot! Here\'s some stuff I can do!\n\n/info For information about Neocod!\n/neohelp For help playing Neopets!\n/links For useful pages on and off the site!\n/userscripts For a list of cool plugins that make things easier!\n/games For a list of games that don\'t need flash to work!\nTry @NeoptesBot [Pet Name Here] to get a picture of your neopet!\n\nI\'ll also remind everyone when the Snowager is sleeping and when you can play Deadly Dice!'
+	let text = 'I\'m Neoptes the Neopets bot! Here\'s some stuff I can do!\n\n/info For information about Neocod!\n/neohelp For help playing Neopets!\n/links For useful pages on and off the site!\n/userscripts For a list of cool plugins that make things easier!\n/games For a list of games that don\'t need flash to work!\n\nI\'ll also remind everyone when the Snowager is sleeping and when you can play Deadly Dice!'
 	return bot.sendMessage(msg.chat.id, text);
 });
 //schedule messages
