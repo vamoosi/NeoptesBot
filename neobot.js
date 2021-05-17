@@ -44,15 +44,16 @@ bot.on('/userscripts', function (msg) {
 //neopet image get
 // On inline query
 bot.on('inlineQuery', msg => {
-
+	var petpic;
     let query = msg.query;
     console.log(`inline query: ${ query }`);
 
     // Create a new answer list object
     const answers = bot.answerList(msg.id, {cacheTime: 60});
-	petImage(`${ query }`).then(data => console.log(data)).catch(console.error);
-	const petpic = data.url;
-	console.log(data.url);
+	petImage(`${ query }`).then(data => {
+		petpic = data.url;
+		console.log(data.url);
+	}).catch(console.error);
     // Photo
     answers.addPhoto({
         id: 'photo',
