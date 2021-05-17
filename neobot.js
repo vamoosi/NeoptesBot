@@ -57,8 +57,8 @@ bot.on('inlineQuery', msg => {
     answers.addPhoto({
         id: 'photo',
         caption: `${ query }`,
-        photo_url: `${ petpic }`,
-        thumb_url: `${ petpic }`
+        photo_url: '' + petpic,
+        thumb_url: '' + petpic
     });
     // Send answers
     return bot.answerQuery(answers);
