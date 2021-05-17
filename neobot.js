@@ -55,7 +55,7 @@ bot.on('inlineQuery', msg => {
 	}).catch(console.error);
     // Photo
     answers.addPhoto({
-		const petpic = petget;
+		const petget = petpic;
         id: 'photo',
         caption: `${ query }`,
         photo_url: `${ petpic }`,
