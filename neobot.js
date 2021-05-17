@@ -49,18 +49,17 @@ bot.on('inlineQuery', msg => {
 
     // Create a new answer list object
     const answers = bot.answerList(msg.id, {cacheTime: 60});
-	petImage(`${ query }`).then(data => {
-		petpic = data.url;
-		console.log(data);
-		    // Photo
-		answers.addPhoto({
-			id: 'photo',
-			caption: `${ query }`,
-			photo_url: 'http://pets.neopets.com/cp/zg2rtxnw/1/5.png',
-			thumb_url: 'http://pets.neopets.com/cp/zg2rtxnw/1/5.png'
-		});
-	}).catch(console.error);
-
+    // Photo
+    answers.addPhoto({
+		petImage(`${ query }`).then(data => {
+			petpic = data.url;
+			console.log(petpic);
+		}).catch(console.error);
+        id: 'photo',
+        caption: `${ query }`,
+        photo_url: petpic,
+        thumb_url: petpic
+    });
     // Send answers
     return bot.answerQuery(answers);
 });
