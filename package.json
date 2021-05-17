@@ -4,6 +4,7 @@
   "description": "wahoo",
   "main": "neobot.js",
   "scripts": {
+	"start": "telebot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,5 +15,5 @@
   },
   "engines": {
 	  "node": "14.x"
-  }
+	  }
 }
