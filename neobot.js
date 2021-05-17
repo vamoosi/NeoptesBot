@@ -2,7 +2,7 @@ const TeleBot = require('telebot');
 const schedule = require('node-schedule');
 const bot = new TeleBot({
 	token: process.env.TELEGRAM_TOKEN || '1702325572:AAHfZFX3uBI6mA5V5cAsOR9QpxAITDuz7PU',
-	usePlugins: ['commandButton']
+	usePlugins: ['commandButton'],
 	webhook: { // Optional. Use webhook instead of polling.
         url: process.env.APP_URL || 'https://neoptes.herokuapp.com:443';, // HTTPS url to send updates to.
         host: '0.0.0.0', // Webhook server host.
