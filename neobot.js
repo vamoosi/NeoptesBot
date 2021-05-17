@@ -1,5 +1,6 @@
 const TeleBot = require('telebot');
 const schedule = require('node-schedule');
+const petImage = require('neopet-image-finder');
 const bot = new TeleBot({
 	token: process.env.TELEGRAM_TOKEN || '1702325572:AAHfZFX3uBI6mA5V5cAsOR9QpxAITDuz7PU',
 	usePlugins: ['commandButton'],
@@ -39,6 +40,18 @@ bot.on('/userscripts', function (msg) {
 	let webPreview = false;
 	let text = 'Here are some useful (and Neo-Legal!) userscripts! You\'ll probably need <a href="https://www.tampermonkey.net/">Tampermonkey</a> for these to work. \n\n•Improved Layouts: <a href="https://github.com/moonbathr/neopets">here</a> and <a href="https://github.com/neopets-fixes/neopets_code">here</a>. Just helps make things less ugly in beta neopets hell. \n•<a href="https://github.com/neopets-fixes/neopets_code">Better Navigation</a>: changes the easy-to-miss sidebar into a proper drop down. You can add your own links as bookmarks, too. \n•<a href="https://www.reddit.com/r/neopets/comments/ky3rf2/userscript_bring_back_the_maps/">Bring back the maps!</a>: Puts the maps back on the explore pages! \n•<a href="https://www.reddit.com/r/neopets/comments/29zu0a/userscript_search_helper_by_diceroll123/">Search Helper</a>: Adds icons to search that item on the shop wizard, jellyneo, your inventory, etc to just about every page. Amen. \n•<a href="https://github.com/Foxcapades/np-shop-highlight">Shop Highlight</a>: CHROME ONLY, but octobr has managed to get it working on firefox with some finagling! Highlights lists of items in any shop! Great for restocking. \n•<a href="https://github.com/jack0lantern/kadoatery-helper">Kadoatery Helper</a>: Keeps track of items you can use for the kadoatery in your inventory and SDB. \n•<a href="https://www.reddit.com/r/neopets/comments/kkf3cu/userscript_bank_improvements_for_beta_including/">Bank Improvements</a>: Interest calculator and automatically completes thousands/millions for the bank. \n•<a href="https://www.reddit.com/r/neopets/comments/l8yylc/userscript_grumpywise_king_autofill_avatar/">Grumpy and Wise King Autofillers</a>: Autofills the grumpy and wise king dropdowns if you\'re hunting for those avatars. \n•<a href="https://www.reddit.com/r/neopets/comments/hps1r4/shenkuu_lunar_temple_userscript_to_highlight_the/">Lunar Temple solver</a>: Highlights the correct answer for the Lunar Temple.'
 	    return bot.sendMessage(msg.chat.id, text, {parseMode, webPreview});
+});
+//neopet image get
+bot.on('inlineQuery', msg => {
+	let query = msg.query;
+	console.log('inline query: ${ query }');
+	petImage('${ query }').then(data => console.log(data)).catch(console.error);
+	answers.addPhoto({
+		id: 'photo',
+		caption: '${ query } looks real cute',
+		photo_url: 'http://pets.neopets.com/cp/qn8kjbwf/1/5.png',
+		thumb_url: 'http://pets.neopets.com/cp/qn8kjbwf/1/5.png'
+	});
 });
 //games list
 var lastMessage;

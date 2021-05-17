@@ -4,16 +4,17 @@
   "description": "wahoo",
   "main": "neobot.js",
   "scripts": {
-	"start": "node neobot.js",
+    "start": "node neobot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "neopet-image-finder": "^5.0.2",
     "node-schedule": "^2.0.0",
     "telebot": "^1.4.1"
   },
   "engines": {
-	  "node": "14.x"
-	  }
+    "node": "14.x"
+  }
 }
