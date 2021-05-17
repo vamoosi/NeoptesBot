@@ -42,19 +42,19 @@ bot.on('/userscripts', function (msg) {
 	    return bot.sendMessage(msg.chat.id, text, {parseMode, webPreview});
 });
 //neopet image get
-
+var petpic;
 bot.on('inlineQuery', msg => {
     let query = msg.query;
     console.log(`inline query: ${ query }`);
-	var petpic;
+
     // Create a new answer list object
     const answers = bot.answerList(msg.id, {cacheTime: 60});
 	petImage(`${ query }`).then(data => {
 		petpic = data.url;
 		console.log(data);
 	}).catch(console.error);
-	console.log(petpic);
     // Photo
+	console.log(data.url);
 	var output = petpic.substr(0, petpic.lastIndexOf('.')) || petpic;
     answers.addPhoto({
         id: 'photo',
