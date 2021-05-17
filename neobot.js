@@ -52,16 +52,15 @@ bot.on('inlineQuery', msg => {
 	petImage(`${ query }`).then(data => {
 		petpic = data.url;
 		console.log(data);
+		    // Photo
+		answers.addPhoto({
+			id: 'photo',
+			caption: `${ query }`,
+			photo_url: data.url,
+			thumb_url: data.url
+		});
 	}).catch(console.error);
-    // Photo
-	console.log(data.url);
-	var output = petpic.substr(0, petpic.lastIndexOf('.')) || petpic;
-    answers.addPhoto({
-        id: 'photo',
-        caption: `${ query }`,
-        photo_url: output + '.png',
-        thumb_url: output + '.png'
-    });
+
     // Send answers
     return bot.answerQuery(answers);
 });
