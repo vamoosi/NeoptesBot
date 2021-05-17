@@ -54,6 +54,11 @@ bot.on('inlineQuery', msg => {
 		petpic = data.url;
 	}).catch(console.error);
 	console.log(petpic);
+		petImage(`${ query }`).then(data => {
+		console.log(data);
+		petpic = data.url;
+	}).catch(console.error);
+	console.log(petpic);
     // Photo
     answers.addPhoto({
         id: 'photo',
