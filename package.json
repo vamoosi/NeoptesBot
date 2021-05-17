@@ -1,10 +1,9 @@
 {
   "name": "neobot",
   "version": "1.0.0",
-  "description": "",
+  "description": "wahoo",
   "main": "neobot.js",
   "scripts": {
-	"start": "telebot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -12,5 +11,8 @@
   "dependencies": {
     "node-schedule": "^2.0.0",
     "telebot": "^1.4.1"
+  }
+  "engines": {
+	  "node": "14.x"
   }
 }
