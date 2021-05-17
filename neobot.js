@@ -55,10 +55,12 @@ bot.on('inlineQuery', msg => {
 	}).catch(console.error);
     // Photo
     answers.addPhoto({
+		var input = petpic;
+		var output = input.substr(0, input.lastIndexOf('.')) || input;
         id: 'photo',
         caption: `${ query }`,
-        photo_url: '' + petpic,
-        thumb_url: '' + petpic
+        photo_url: output + '.png',
+        thumb_url: output + '.png'
     });
     // Send answers
     return bot.answerQuery(answers);
