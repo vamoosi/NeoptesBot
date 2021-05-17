@@ -42,7 +42,7 @@ bot.on('/userscripts', function (msg) {
 	    return bot.sendMessage(msg.chat.id, text, {parseMode, webPreview});
 });
 //neopet image get
-var petget;
+var petpic;
 bot.on('inlineQuery', msg => {
     let query = msg.query;
     console.log(`inline query: ${ query }`);
@@ -50,12 +50,11 @@ bot.on('inlineQuery', msg => {
     // Create a new answer list object
     const answers = bot.answerList(msg.id, {cacheTime: 60});
 	petImage(`${ query }`).then(data => {
-		petget = data.url;
+		petpic = data.url;
 		console.log(data.url);
 	}).catch(console.error);
     // Photo
     answers.addPhoto({
-		const petget = petpic;
         id: 'photo',
         caption: `${ query }`,
         photo_url: `${ petpic }`,
