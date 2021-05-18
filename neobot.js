@@ -42,26 +42,38 @@ bot.on('/userscripts', function (msg) {
 	    return bot.sendMessage(msg.chat.id, text, {parseMode, webPreview});
 });
 //neopet image get
-bot.on('inlineQuery', msg => {
-	var petpic;
-    let query = msg.query;
-    console.log(`inline query: ${ query }`);
-    // Create a new answer list object
-    const answers = bot.answerList(msg.id, {cacheTime: 60});
-	petImage(`${ query }`).then(data => {
-		console.log(data);
-		petpic = data.url;
-	}).catch(console.error);
-	console.log(petpic);
-    // Photo
-    answers.addPhoto({
-        id: 'photo',
-        caption: `${ query }`,
-        photo_url: 'https://telegram.org/img/t_logo.png',
-        thumb_url: 'https://telegram.org/img/t_logo.png'
+var lastMessage;
+var photoUrl = 'https://telegram.org/img/tl_card_destruct.gif';
+
+bot.on('/pic', msg => {
+
+    // Send image with caption
+    return bot.sendPhoto(
+        msg.from.id, photoUrl, {caption: 'This is a default caption.'}
+    ).then(re => {
+        // Get message id and chat
+        lastMessage = [msg.from.id, re.result.message_id];
+        bot.sendMessage(msg.from.id, 'Now set a new caption using /edit <caption>');
     });
-    // Send answers
-    return bot.answerQuery(answers);
+
+});
+
+bot.on('/edit', msg => {
+
+    if (!lastMessage) {
+        return bot.sendMessage(msg.from.id, 'Type /start and then /edit <caption>');
+    }
+
+    let [chatId, messageId] = lastMessage;
+    let caption = msg.text.replace('/edit ', '');
+
+    if (caption == '/edit') caption = 'No caption.';
+
+    // Change caption
+    return bot.editMessageCaption({chatId, messageId}, caption).then(() => {
+        bot.sendMessage(msg.from.id, `Caption changed to: ${ caption }`);
+    });
+
 });
 //games list
 var lastMessage;
