@@ -43,9 +43,10 @@ bot.on('/userscripts', function (msg) {
 });
 //neopet image get
 
-bot.on(/^\/say (.+)$/, (msg, props) => {
-	const text = props.match[1];
-    return bot.sendMessage(msg.from.id, text, { replyToMessage: msg.message_id });
+bot.on(/^\/pet (.+)$/, (msg, props) => {
+	const petname = props.match[1];
+	petImage(petname).then(data => console.log(data)).catch(console.error);
+    return bot.sendMessage(msg.from.id, petname, { replyToMessage: msg.message_id });
 });
 //games list
 var lastMessage;
