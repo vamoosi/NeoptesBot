@@ -14,7 +14,7 @@ bot.on('/neohelp', function (msg) {
 	let parseMode = 'MarkdownV2';
 	let text = 'Not sure how to Neopets? Confused by all the weird new stuff? [Check here\\!](https://www.reddit.com/r/neopets/comments/kkfpik/are_you_returning_or_even_new_to_neopets_check/)';
 
-    return bot.sendMtessage(msg.chat.id, text, {parseMode});
+    return bot.sendMessage(msg.chat.id, text, {parseMode});
 
 });
 //info command
