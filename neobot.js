@@ -1,8 +1,7 @@
 const TeleBot = require('telebot');
 const schedule = require('node-schedule');
-const petImage = require('neopet-image-finder');
 const bot = new TeleBot({
-	token: process.env.TELEGRAM_TOKEN || '1702325572:AAHfZFX3uBI6mA5V5cAsOR9QpxAITDuz7PU',
+	token: process.env.TELEGRAM_TOKEN || [TOKEN lol yeah oops],
 	usePlugins: ['commandButton'],
 	webhook: { // Optional. Use webhook instead of polling.
         url: process.env.APP_URL || 'https://neoptes.herokuapp.com:443', // HTTPS url to send updates to.
@@ -15,14 +14,14 @@ bot.on('/neohelp', function (msg) {
 	let parseMode = 'MarkdownV2';
 	let text = 'Not sure how to Neopets? Confused by all the weird new stuff? [Check here\\!](https://www.reddit.com/r/neopets/comments/kkfpik/are_you_returning_or_even_new_to_neopets_check/)';
 
-    return bot.sendMessage(msg.chat.id, text, {parseMode});
+    return bot.sendMtessage(msg.chat.id, text, {parseMode});
 
 });
 //info command
 bot.on('/info', function (msg) {
 	let parseMode = 'MarkdownV2';
 	let webPreview = false;
-	let text = '[Click here](https://docs.google.com/spreadsheets/d/1HZz7zkccEcBZQFS3zuOSjZV2YgjRkgld8c-QBfbowcc/edit#gid=634347005) for the list of Neocod accounts\\! \nAnd [click here](http://www.neopets.com/guilds/guild.phtml?id=4183432) to go to our very official guild\\!';
+	let text = '[Click here](x) for the list of Neocod accounts\\! \nAnd [click here](y) to go to our very official guild\\!';
 
     return bot.sendMessage(msg.chat.id, text, {parseMode, webPreview});
 
@@ -45,8 +44,8 @@ bot.on('/userscripts', function (msg) {
 
 bot.on(/^\/pet (.+)$/, (msg, props) => {
 	const petname = props.match[1];
-	petImage(petname).then(data => console.log(data)).catch(console.error);
-    return bot.sendMessage(msg.from.id, petname, { replyToMessage: msg.message_id });
+	const petpic = `http://pets.neopets.com/cpn/${encodeURIComponent(petname)}/1/5.png`;
+	return bot.sendPhoto(msg.chat.id, petpic, {caption: petname});
 });
 //games list
 var lastMessage;
@@ -128,7 +127,7 @@ bot.on('/games4', msg => {
 });
 //commands list
 bot.on('/commands', function (msg) {
-	let text = 'I\'m Neoptes the Neopets bot! Here\'s some stuff I can do!\n\n/info For information about Neocod!\n/neohelp For help playing Neopets!\n/links For useful pages on and off the site!\n/userscripts For a list of cool plugins that make things easier!\n/games For a list of games that don\'t need flash to work!\n\nI\'ll also remind everyone when the Snowager is sleeping and when you can play Deadly Dice!'
+	let text = 'I\'m Neoptes the Neopets bot! Here\'s some stuff I can do!\n\n/info For information about Neocod!\n/neohelp For help playing Neopets!\n/links For useful pages on and off the site!\n/userscripts For a list of cool plugins that make things easier!\n/games For a list of games that don\'t need flash to work!\n/pet Petname to get a picture of that neopet!\n\nI\'ll also remind everyone when the Snowager is sleeping and when you can play Deadly Dice!'
 	return bot.sendMessage(msg.chat.id, text);
 });
 //schedule messages
